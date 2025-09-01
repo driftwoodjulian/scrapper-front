@@ -8,6 +8,7 @@ function ResponseDisplay({ response }) {
   const [emailError, setEmailError] = useState(null)
   const [emailSuccess, setEmailSuccess] = useState(false)
   const [showImages, setShowImages] = useState(false)
+  const [showPdfs, setShowPdfs] = useState(false)
 
   const handleSendEmail = async (e) => {
     e.preventDefault()
@@ -33,6 +34,10 @@ function ResponseDisplay({ response }) {
     setShowImages(!showImages)
   }
 
+  const handleDisplayPdfs = () => {
+    setShowPdfs(!showPdfs)
+  }
+
   if (!response) {
     return (
       <div className="main-content">
@@ -47,10 +52,29 @@ function ResponseDisplay({ response }) {
   return (
     <div className="main-content">
       <div className="card">
-        <h2 className="card-title">Backend Response</h2>
+        <h2 className="card-title"> Information from MiArgentina</h2>
         <p>
           <strong>Message:</strong> {response.message}
         </p>
+
+        {response.pdfs && response.pdfs.length > 0 && (
+          <>
+            <h3 style={{ marginTop: "24px", marginBottom: "12px", fontSize: "16px", fontWeight: "600" }}>
+              PDFs ({response.pdfs.length})
+            </h3>
+            <div className="screenshot-grid">
+              {response.pdfs.map((pdf, index) => (
+                <div key={index} className="screenshot-item">
+                  <div className="screenshot-filename">{pdf.filename}</div>
+                  <div className="screenshot-path">{pdf.path}</div>
+                  <span className={`status-badge ${pdf.success ? "status-success" : "status-error"}`}>
+                    {pdf.success ? "Success" : "Failed"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
         {response.screenshots && response.screenshots.length > 0 && (
           <>
@@ -90,7 +114,7 @@ function ResponseDisplay({ response }) {
                 disabled={emailLoading}
               />
             </div>
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <button type="submit" className="btn btn-secondary" disabled={emailLoading || !email}>
                 {emailLoading && <span className="loading"></span>}
                 {emailLoading ? "Sending..." : "Send"}
@@ -102,6 +126,14 @@ function ResponseDisplay({ response }) {
                 disabled={!response.screenshots || response.screenshots.length === 0}
               >
                 {showImages ? "Hide Images" : "Display Images"}
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleDisplayPdfs}
+                disabled={!response.pdfs || response.pdfs.length === 0}
+              >
+                {showPdfs ? "Hide PDFs" : "Display PDFs"}
               </button>
             </div>
           </div>
@@ -128,6 +160,41 @@ function ResponseDisplay({ response }) {
           </div>
         )}
       </div>
+
+      {showPdfs && response.pdfs && response.pdfs.length > 0 && (
+        <div className="card">
+          <h3 className="card-title">PDFs</h3>
+          <div style={{ display: "grid", gap: "16px" }}>
+            {response.pdfs.map((pdf, index) => (
+              <div key={index} style={{ textAlign: "center" }}>
+                <h4 style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>{pdf.filename}</h4>
+                <div
+                  style={{
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    padding: "20px",
+                    backgroundColor: "#f9f9f9",
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                  }}
+                >
+                  <div style={{ marginBottom: "12px", color: "#666" }}>
+                    📄 PDF Document
+                  </div>
+                  <a
+                    href={`http://localhost:3000/${pdf.path}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    style={{ textDecoration: "none", display: "inline-block" }}
+                  >
+                    View PDF
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {showImages && response.screenshots && response.screenshots.length > 0 && (
         <div className="card">

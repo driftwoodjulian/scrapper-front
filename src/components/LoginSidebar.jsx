@@ -15,7 +15,7 @@ function LoginSidebar({ onLogin, loading, error }) {
 
   return (
     <div className="sidebar">
-      <h2 className="card-title">Login to Backend</h2>
+      <h2 className="card-title">Login to MiArgentina </h2>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
