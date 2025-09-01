@@ -15,7 +15,7 @@ function LoginSidebar({ onLogin, loading, error }) {
 
   return (
     <div className="sidebar">
-      <h2 className="card-title">Login to MiArgentina </h2>
+      <h2 className="card-title">Login de MiArgentina </h2>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -28,7 +28,7 @@ function LoginSidebar({ onLogin, loading, error }) {
             className="form-input"
             value={cuil}
             onChange={(e) => setCuil(e.target.value)}
-            placeholder="Enter CUIL"
+            placeholder="Ingrese CUIL"
             disabled={loading}
           />
         </div>
@@ -43,7 +43,7 @@ function LoginSidebar({ onLogin, loading, error }) {
             className="form-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
+            placeholder="Ingrese su clave"
             disabled={loading}
           />
         </div>

@@ -42,8 +42,8 @@ function ResponseDisplay({ response }) {
     return (
       <div className="main-content">
         <div className="card">
-          <h2 className="card-title">Welcome</h2>
-          <p>Please login using the form on the left to see the backend response.</p>
+          <h2 className="card-title">Bienvenido</h2>
+          <p>Por favor, para usar la aplicacion ingrese sus credenciales de MiArgentina al costador y aguarde mientras recolectamos informacion de distintas urls claves en relacion al reprocan. </p>
         </div>
       </div>
     )
@@ -181,7 +181,7 @@ function ResponseDisplay({ response }) {
                     📄 PDF Document
                   </div>
                   <a
-                    href={`http://localhost:3000/${pdf.path}`}
+                    href={`http://200.80.42.97:3000/${pdf.path}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
@@ -204,7 +204,7 @@ function ResponseDisplay({ response }) {
               <div key={index} style={{ textAlign: "center" }}>
                 <h4 style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>{screenshot.filename}</h4>
                 <img
-                  src={`http://localhost:3000/${screenshot.path}`}
+                  src={`http://200.80.42.97:3000/${screenshot.path}`}
                   alt={screenshot.filename}
                   style={{
                     maxWidth: "100%",

@@ -24,7 +24,7 @@ body {
 
 .sidebar {
   width: 320px;
-  background: white;
+  background: black;
   border-right: 1px solid #e2e8f0;
   padding: 24px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ body {
   display: block;
   margin-bottom: 6px;
   font-weight: 500;
-  color: #374151;
+  color: white;
 }
 
 .form-input {
@@ -107,12 +107,12 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: #1f2937;
+  color: white;
 }
 
 .screenshot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
   gap: 16px;
   margin-top: 16px;
 }
