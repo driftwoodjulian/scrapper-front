@@ -181,7 +181,7 @@ function ResponseDisplay({ response }) {
                     📄 PDF Document
                   </div>
                   <a
-                    href={`http://200.80.42.97:3000/${pdf.path}`}
+                    href={`${import.meta.env.VITE_FILE_SERVER_URL}/${pdf.path}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
@@ -204,7 +204,7 @@ function ResponseDisplay({ response }) {
               <div key={index} style={{ textAlign: "center" }}>
                 <h4 style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>{screenshot.filename}</h4>
                 <img
-                  src={`http://200.80.42.97:3000/${screenshot.path}`}
+                  src={`${import.meta.env.VITE_FILE_SERVER_URL}/${screenshot.path}`}
                   alt={screenshot.filename}
                   style={{
                     maxWidth: "100%",

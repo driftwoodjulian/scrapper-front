@@ -15,7 +15,7 @@ function App() {
     setResponse(null)
 
     try {
-      const res = await fetch("http://200.80.42.97:5000/api/login", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}${import.meta.env.VITE_API_LOGIN_ENDPOINT}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
